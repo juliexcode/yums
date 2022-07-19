@@ -9,16 +9,19 @@
         <div class="mb-3">
             <label class="form-label">nom</label>
             <input type="text" name="name" value="{{$carte->name}}" class="form-control">
+
         </div>
         <div class="mb-3">
             <label class="form-label">description</label>
             <textarea class="form-control" name="description">
             {{$carte->description}}
             </textarea>
+
         </div>
         <div class="mb-3">
             <label class="form-label">prix</label>
             <input type="number" name="prix" value="{{$carte->prix}}" class="form-control">
+
         </div>
         <div class="mb-3">
             <label class="form-label">categorie</label>

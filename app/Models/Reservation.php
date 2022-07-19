@@ -2,10 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Table;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Reservation extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'email',
+        'tel',
+        'reserv',
+        'table_id',
+        'personnes',
+    ];
+
+    protected $dates = [
+        'reserv'
+    ];
+
+    public function table()
+    {
+        return $this->belongsTo(Table::class);
+    }
 }

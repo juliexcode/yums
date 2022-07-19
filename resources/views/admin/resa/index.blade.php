@@ -7,30 +7,32 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Nom Prenom</th>
+                <th scope="col">Email / Tel</th>
+                <th scope="col">Reservation</th>
+                <th scope="col">Nombre de personnes</th>
+                <th scope="col">Table</th>
+                <th scope="col">Action</th>
+
             </tr>
         </thead>
         <tbody>
+            @foreach($reservations as $resa)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{{$resa->nom}} {{$resa->prenom}}</td>
+                <td>{{$resa->email}} / {{$resa->tel}}</td>
+                <td>{{date('d-m-Y', strtotime($resa->reserv))}}</td>
+                <td>{{$resa->personnes}}</td>
+                <td>{{$resa->table->name}}</td>
+                <td><a href="{{route ('admin.resa.edit',$resa->id)}}">modifier </a>
+                    <form method="POST" action="{{route('admin.resa.destroy', $resa->id)}}" onsubmit="return confirm('Êtes-vous sûre de vouloir annuler?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"> Supprimer</button>
+                    </form>
+                </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
