@@ -48,7 +48,7 @@ class CarteController extends Controller
             'prix' => $request->prix,
             'categories' => $request->categories,
         ]);
-        return to_route('admin.carte.index');
+        return to_route('admin.carte.index')->with('success', 'produit ajouté à la carte');
     }
 
     /**
@@ -100,7 +100,7 @@ class CarteController extends Controller
             'prix' => $request->prix,
             'categories' => $request->categories,
         ]);
-        return to_route('admin.carte.index');
+        return to_route('admin.carte.index')->with('warning', 'produit modifié à la carte');
     }
 
     /**
@@ -113,6 +113,6 @@ class CarteController extends Controller
     {
         Storage::delete($carte->image);
         $carte->delete();
-        return to_route('admin.carte.index');
+        return to_route('admin.carte.index')->with('danger', 'produit supprimé à la carte');
     }
 }

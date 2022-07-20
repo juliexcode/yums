@@ -62,7 +62,7 @@
             <select class="form-select" name="table_id" aria-label="Default select example">
                 <option selected>choisir une table</option>
                 @foreach($tables as $table)
-                <option value="{{$table->id}}">{{$table->name}}</option>
+                <option value="{{$table->id}}">{{$table->name}} ( Pour {{$table->chaises}} personnes)</option>
 
                 @endforeach
             </select>

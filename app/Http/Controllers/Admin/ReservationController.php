@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationStoreRequest;
 use App\Models\Reservation;
 use App\Models\Table;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -40,8 +41,18 @@ class ReservationController extends Controller
      */
     public function store(ReservationStoreRequest $request)
     {
+        $table = Table::findOrFail($request->table_id);
+        if ($request->personnes > $table->chaises) {
+            return back()->with('danger', 'Veuillez choisir une table basée sur le nombre de personnes souhaité');
+        }
+        $request_date = Carbon::parse($request->reserv);
+        foreach ($table->reservations as $res) {
+            if ($res->reserv->format('Y-m-d') == $request_date->format('Y-m-d')) {
+                return back()->with('danger', 'Nous sommes désolé mais cette table est déja réservé pour cette date, veuillez en choisir une autre.');
+            }
+        }
         Reservation::create($request->validated());
-        return to_route('admin.resa.index');
+        return to_route('admin.resa.index')->with('success', 'Réservation effectué');
     }
 
     /**

@@ -43,7 +43,7 @@ class TableController extends Controller
             'location' => $request->location,
             'chaises' => $request->chaises,
         ]);
-        return to_route('admin.tables.index');
+        return to_route('admin.tables.index')->with('success', 'Table ajouté');
     }
 
     /**
@@ -78,7 +78,7 @@ class TableController extends Controller
     public function update(TableStoreRequest $request, Table $table)
     {
         $table->update($request->validated());
-        return to_route('admin.tables.index');
+        return to_route('admin.tables.index')->with('warning', 'Table modifié');
     }
 
     /**
@@ -90,6 +90,7 @@ class TableController extends Controller
     public function destroy(Table $table)
     {
         $table->delete();
-        return to_route('admin.tables.index');
+        $table->reservations()->delete();
+        return to_route('admin.tables.index')->with('danger', 'Table supprimé avec ses réservations associés');
     }
 }

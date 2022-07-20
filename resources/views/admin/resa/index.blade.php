@@ -21,7 +21,7 @@
             <tr>
                 <td>{{$resa->nom}} {{$resa->prenom}}</td>
                 <td>{{$resa->email}} / {{$resa->tel}}</td>
-                <td>{{date('d-m-Y', strtotime($resa->reserv))}}</td>
+                <td>{{$resa->reserv}}</td>
                 <td>{{$resa->personnes}}</td>
                 <td>{{$resa->table->name}}</td>
                 <td><a href="{{route ('admin.resa.edit',$resa->id)}}">modifier </a>
