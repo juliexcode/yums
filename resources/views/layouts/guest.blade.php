@@ -20,34 +20,36 @@
 </head>
 
 <body style="font-family: 'Ubuntu', sans-serif;">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light">
 
 
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" style="font-family:'Lateef', cursive; font-size:40px" href="#">YUM'S</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">PRODUITS</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            CATEGORIES
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                        <a class="nav-link " id="lien" href="#">ACCUEIL</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">TABLES</a>
+                        <a class="nav-link " id="lien" href="#">CONCEPT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="lien" href="#">LA CARTE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">RESERVATION</a>
+                        <a class="nav-link" id="lien" href="#">CONTACT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="lien" href="#">RESERVATION</a>
                     </li>
                 </ul>
 
@@ -80,3 +82,24 @@
 </body>
 
 </html>
+
+<style>
+    #menu {
+        box-shadow: 0px 8px 12px rgba(142, 142, 142, 0.5);
+    }
+
+    #lien {
+        color: rgba(0, 0, 0, 1);
+
+    }
+
+    #lien:hover {
+        text-decoration: overline;
+        text-decoration-color: rgba(230, 192, 101, 1);
+    }
+
+    #lien:active {
+        color: rgba(230, 192, 101, 1);
+
+    }
+</style>

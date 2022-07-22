@@ -8,6 +8,9 @@ use App\Models\Reservation;
 use App\Models\Table;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use function Ramsey\Uuid\v1;
 
 class ReservationController extends Controller
 {
@@ -41,17 +44,49 @@ class ReservationController extends Controller
      */
     public function store(ReservationStoreRequest $request)
     {
+
         $table = Table::findOrFail($request->table_id);
         if ($request->personnes > $table->chaises) {
             return back()->with('danger', 'Veuillez choisir une table basée sur le nombre de personnes souhaité');
         }
-        $request_date = Carbon::parse($request->reserv);
-        foreach ($table->reservations as $res) {
-            if ($res->reserv->format('Y-m-d') == $request_date->format('Y-m-d')) {
-                return back()->with('danger', 'Nous sommes désolé mais cette table est déja réservé pour cette date, veuillez en choisir une autre.');
-            }
+
+        $daterequest = $request->date;
+        $heurerequest = $request->heure;
+        $tablerequest = $request->table_id;
+
+        $reservation = Reservation::query()
+            ->where('date', '=', $daterequest)
+            ->where('heure', '=', $heurerequest)
+            ->where('table_id', '=', $tablerequest)
+            ->get();
+
+        if (count($reservation) != 0) {
+            // dd($reservation);
+            return  back()->with('danger', 'Nous sommes désolé mais cette table est déja réservé pour cette date, veuillez en choisir une autre.');
         }
-        Reservation::create($request->validated());
+        // foreach ($table->reservations as $res) {
+        //     $startReserv = date('Y-m-d H:i', strtotime($res . ' - ' . $limite . ' minute'));
+        //     if (($res->reserv->format('Y-m-d H:i')  == $request_date->format('Y-m-d H:i')) && ($res->reservFin->format('Y-m-d H:i')  $request_date->format('Y-m-d H:i'))) {
+
+        //         return back()->with('danger', 'Nous sommes désolé mais cette table est déja réservé pour cette date, veuillez en choisir une autre.');
+        //     }
+        // }
+
+        Reservation::create(
+            [
+                'nom' => $request->nom,
+                'prenom' => $request->prenom,
+                'email' => $request->email,
+                'tel' => $request->tel,
+                'date' => $request->date,
+                'heure' => $request->heure,
+                'table_id' => $request->table_id,
+                'personnes' => $request->personnes,
+            ]
+        );
+
+
+
         return to_route('admin.resa.index')->with('success', 'Réservation effectué');
     }
 

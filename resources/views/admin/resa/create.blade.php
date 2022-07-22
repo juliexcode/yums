@@ -38,14 +38,45 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">reservation</label>
-            <input type="datetime-local" name="reserv" class="form-control" class="@error('reserv') is-invalid @enderror">
+            <label class="form-label">reservation de la date</label>
+            <input type="date" name="date" class="form-control" class="@error('date') is-invalid @enderror">
 
-            @error('reserv')
+            @error('date')
             <div style="color:rgba(230, 192, 101, 1) ; "> {{$message}}</div>
             @enderror
 
         </div>
+
+        <div class="mb-3">
+            <label class="form-label">reservation de l'heure</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="heure" value="12h-13h" required>
+                <label class="form-check-label">
+                    12h - 13h
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="heure" value="13h-14h">
+                <label class="form-check-label">
+                    13h - 14h
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="heure" value="14h-15h">
+                <label class="form-check-label">
+                    14h - 15h
+                </label>
+            </div>
+            @error('heure')
+            <div style="color:rgba(230, 192, 101, 1) ; "> {{$message}}</div>
+            @enderror
+
+        </div>
+
+
+
+
+
 
         <div class="mb-3">
             <label class="form-label">Nombre de personne</label>

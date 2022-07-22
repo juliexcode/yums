@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('email');
             $table->string('tel');
-            $table->dateTime('reserv');
+            $table->dateTime('date');
+            $table->string('heure');
             $table->unsignedBigInteger('table_id');
             $table->integer('personnes');
             $table->timestamps();
