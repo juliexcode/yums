@@ -36,20 +36,18 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link " id="lien" href="#">ACCUEIL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " id="lien" href="#">CONCEPT</a>
+                        <a class="nav-link " id="lien" href="{{route('welcome.index')}}">ACCUEIL</a>
                     </li>
 
+
                     <li class="nav-item">
-                        <a class="nav-link" id="lien" href="#">LA CARTE</a>
+                        <a class="nav-link" id="lien" href="{{route('carte.index')}}">LA CARTE</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="lien" href="#">CONTACT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="lien" href="#">RESERVATION</a>
+                        <a class="nav-link" id="lien" href="{{route('reservation.index')}}">FAIRE RESERVATION</a>
                     </li>
                 </ul>
 

@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container">
+
     <form method="POST" action="{{route ('admin.tables.store')}}">
         @csrf
         <div class="mb-3">

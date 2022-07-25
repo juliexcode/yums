@@ -1,8 +1,10 @@
-@extends('layouts.admin')
+@extends('layouts.guest')
 
 @section('content')
-
 <div class="container">
+    <div style="background-color: blue;">
+        FAIRE UNE RESERVATION
+    </div>
     <form method="POST" action="{{route ('admin.resa.store')}}">
         @csrf
         <div class="mb-3">
@@ -123,10 +125,9 @@
 
 
 
-        <button type="submit"> AJouter</button>
+        <button type="submit"> faire une réservation</button>
     </form>
 
 
 </div>
-
 @endsection

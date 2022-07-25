@@ -22,7 +22,7 @@ class Reservation extends Model
     ];
 
     protected $dates = [
-        'reserv'
+        'date'
     ];
 
     public function table()

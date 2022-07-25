@@ -64,13 +64,7 @@ class ReservationController extends Controller
             // dd($reservation);
             return  back()->with('danger', 'Nous sommes désolé mais cette table est déja réservé pour cette date, veuillez en choisir une autre.');
         }
-        // foreach ($table->reservations as $res) {
-        //     $startReserv = date('Y-m-d H:i', strtotime($res . ' - ' . $limite . ' minute'));
-        //     if (($res->reserv->format('Y-m-d H:i')  == $request_date->format('Y-m-d H:i')) && ($res->reservFin->format('Y-m-d H:i')  $request_date->format('Y-m-d H:i'))) {
 
-        //         return back()->with('danger', 'Nous sommes désolé mais cette table est déja réservé pour cette date, veuillez en choisir une autre.');
-        //     }
-        // }
 
         Reservation::create(
             [
@@ -107,9 +101,10 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Reservation $resa)
     {
-        //
+        $tables = Table::all();
+        return view('admin.resa.edit', compact('resa', 'tables'));
     }
 
     /**
@@ -119,9 +114,32 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReservationStoreRequest $request, Reservation $resa)
     {
-        //
+        $table = Table::findOrFail($request->table_id);
+        if ($request->personnes > $table->chaises) {
+            return back()->with('danger', 'Veuillez choisir une table basée sur le nombre de personnes souhaité');
+        }
+
+        $daterequest = $request->date;
+        $heurerequest = $request->heure;
+        $tablerequest = $request->table_id;
+
+        $reservation = Reservation::query()
+            ->where('id', '!=', $resa->id)
+            ->where('date', '=', $daterequest)
+            ->where('heure', '=', $heurerequest)
+            ->where('table_id', '=', $tablerequest)
+
+            ->get();
+
+        if (count($reservation) != 0) {
+            // dd($reservation);
+            return  back()->with('danger', 'Nous sommes désolé mais cette table est déja réservé pour cette date, veuillez en choisir une autre.');
+        }
+
+        $resa->update($request->validated());
+        return to_route('admin.resa.index')->with('warning', 'Réservation modifié');
     }
 
     /**
@@ -130,8 +148,9 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reservation $resa)
     {
-        //
+        $resa->delete();
+        return to_route('admin.resa.index')->with('danger', 'Réservation annulé');
     }
 }

@@ -21,6 +21,11 @@ use App\Http\Controllers\Admin\ReservationController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/', ['App\Http\Controllers\Frontend\WelcomController', 'index'])->name('welcome.index');
+
+Route::get('/lacarte', ['App\Http\Controllers\Frontend\CarteController', 'index'])->name('carte.index');
+Route::get('/lacarte/plats', ['App\Http\Controllers\Frontend\CarteController', 'plat'])->name('carte.plat');
+Route::get('/reservation', ['App\Http\Controllers\Frontend\ReservationController', 'index'])->name('reservation.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
