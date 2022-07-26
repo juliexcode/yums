@@ -47,7 +47,7 @@
                         <a class="nav-link" id="lien" href="#">CONTACT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="lien" href="{{route('reservation.index')}}">FAIRE RESERVATION</a>
+                        <a class="nav-link" id="lien" href="{{route('reservation.premier')}}">FAIRE RESERVATION</a>
                     </li>
                 </ul>
 

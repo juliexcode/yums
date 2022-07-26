@@ -25,7 +25,11 @@ Route::get('/', ['App\Http\Controllers\Frontend\WelcomController', 'index'])->na
 
 Route::get('/lacarte', ['App\Http\Controllers\Frontend\CarteController', 'index'])->name('carte.index');
 Route::get('/lacarte/plats', ['App\Http\Controllers\Frontend\CarteController', 'plat'])->name('carte.plat');
-Route::get('/reservation', ['App\Http\Controllers\Frontend\ReservationController', 'index'])->name('reservation.index');
+Route::get('/reservation/premier-partie', ['App\Http\Controllers\Frontend\ReservationController', 'premier'])->name('reservation.premier');
+Route::post('/reservation/premier-partie', ['App\Http\Controllers\Frontend\ReservationController', 'storepremier'])->name('reservation.store.premier');
+Route::get('/reservation/deuxieme-partie', ['App\Http\Controllers\Frontend\ReservationController', 'deuxieme'])->name('reservation.deuxieme');
+Route::post('/reservation/deuxieme-partie', ['App\Http\Controllers\Frontend\ReservationController', 'storedeuxieme'])->name('reservation.store.deuxieme');
+Route::get('/merci', ['App\Http\Controllers\Frontend\WelcomController', 'merci'])->name('merci');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
