@@ -39,7 +39,7 @@ class CarteController extends Controller
      */
     public function store(CarteStoreRequest $request)
     {
-        $image = $request->file('image')->store('public/carte');
+        $image = $request->file('image')->store('public/images');
 
         Carte::create([
             'name' => $request->name,
@@ -91,7 +91,7 @@ class CarteController extends Controller
         $image = $carte->image;
         if ($request->hasFile('image')) {
             Storage::delete($carte->image);
-            $image = $request->file('image')->store('public/carte');
+            $image = $request->file('image')->store('public/images');
         }
         $carte->update([
             'name' => $request->name,
