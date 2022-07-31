@@ -13,8 +13,8 @@ class ReservationController extends Controller
 {
     public function premier(Request $request)
     {
-        $resa = $request->session()->get('resa');
-        $min_date = Carbon::today();
+        $resa = $request->session()->get('resa');  //récupére la réservation demandé par l'utilisateur
+        $min_date = Carbon::tomorrow();  //récupére la date de demain
         return view('reservation.premier', compact('resa', 'min_date'));
     }
 
@@ -35,6 +35,7 @@ class ReservationController extends Controller
             $request->session()->put('resa', $resa);
         } else {
             $resa = $request->session()->get('resa');
+            $resa->fill($validated);
             $request->session()->put('resa', $resa);
         }
 
@@ -43,35 +44,24 @@ class ReservationController extends Controller
 
     public function deuxieme(Request $request)
     {
-        $resa = $request->session()->get('resa');
+        $resa = $request->session()->get('resa');  //récupére les données de réservation de l'utilisateur connecté
 
-        $daterequest = $resa->date;
-        $heurerequest = $resa->heure;
-        $guestrequest = $resa->personnes;
-        // dd($guestrequest);
+        $daterequest = $resa->date; //récupére la date demandé
+        $heurerequest = $resa->heure; //récupére l'heure demandé
+        $guestrequest = $resa->personnes; //récupére le nombre de personnes demandé pour la réservation 
 
 
-        $res_table_ids = Reservation::query()
-            ->where('date', '=', $daterequest)
-            ->where('heure', '=', $heurerequest)
-            ->get();
 
-        // if (count($res_table_ids) != 0) {
-        //     return $res_table_ids;
-        // };
+        $res_table_ids = Reservation::query()  //table de donnée des réservations
+            ->where('date', '=', $daterequest)  //ou dans la colonne date est égale à la date demandé
+            ->where('heure', '=', $heurerequest) //ou dans la colonne heure est égale à l'heure demandé
+            ->get(); // on récupére les tables qui ont des réservation identique à la réservation demandé
 
-        // if (count($res_table_ids) != 0) {
-        //     dd($res_table_ids->pluck('table_id'));
-        // };
 
-        // $res_table_ids = Reservation::orderBy('date')->orderBy('heure')->get()->filter(function ($value) use ($resa) {
-        //     return ($value->date->format('Y-m-d') && $value->heure) == ($resa->date->format('Y-m-d') && $resa->heure);
-        // })->pluck('table_id');
-
-        $tables = Table::query()
-            ->where('chaises', '>=', $resa->personnes)
-            ->whereNotIn('id', $res_table_ids->pluck('table_id'))
-            ->get();
+        $tables = Table::query()   //table de donnée des tables
+            ->where('chaises', '>=', $resa->personnes)  //ou dans la colonne chaises est supérieur ou égale au nombre de personne demandé pour la réservation
+            ->whereNotIn('id', $res_table_ids->pluck('table_id')) //ou l'id de la table demandé n'est pas dans la variable $res_table_ids
+            ->get(); //on récupere les tables qui ont des chaises supérieur ou égale au nombre de personne demandé et les tables qui n'ont pas de réservation identique
 
         return view('reservation.deuxieme', compact('resa', 'tables'));
     }

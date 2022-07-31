@@ -50,18 +50,18 @@ class ReservationController extends Controller
             return back()->with('danger', 'Veuillez choisir une table basée sur le nombre de personnes souhaité');
         }
 
-        $daterequest = $request->date;
-        $heurerequest = $request->heure;
-        $tablerequest = $request->table_id;
+        $daterequest = $request->date; //récupére la date demandé
+        $heurerequest = $request->heure; //récupére l'heure demandé
+        $tablerequest = $request->table_id; //récupére la table demandé
 
         $reservation = Reservation::query()
-            ->where('date', '=', $daterequest)
-            ->where('heure', '=', $heurerequest)
-            ->where('table_id', '=', $tablerequest)
-            ->get();
+            ->where('date', '=', $daterequest)  //ou dans la colonne date est égale à la date demandé
+            ->where('heure', '=', $heurerequest) //ou dans la colonne heure est égale à l'heure demandé
+            ->where('table_id', '=', $tablerequest) //ou dans la colonne table est égale à la table demandé
+            ->get(); //Récupére
 
         if (count($reservation) != 0) {
-            // dd($reservation);
+            //si la réservation demander est différent de 0 càd il y a une réservation identique alors on retourne un message
             return  back()->with('danger', 'Nous sommes désolé mais cette table est déja réservé pour cette date, veuillez en choisir une autre.');
         }
 
