@@ -25,6 +25,10 @@ Route::get('/', ['App\Http\Controllers\Frontend\WelcomController', 'index'])->na
 
 Route::get('/lacarte', ['App\Http\Controllers\Frontend\CarteController', 'index'])->name('carte.index');
 Route::get('/lacarte/plats', ['App\Http\Controllers\Frontend\CarteController', 'plat'])->name('carte.plat');
+Route::get('/lacarte/entrees', ['App\Http\Controllers\Frontend\CarteController', 'entree'])->name('carte.entree');
+Route::get('/lacarte/desserts', ['App\Http\Controllers\Frontend\CarteController', 'dessert'])->name('carte.dessert');
+Route::get('/lacarte/boissons', ['App\Http\Controllers\Frontend\CarteController', 'boisson'])->name('carte.boisson');
+
 Route::get('/reservation/premier-partie', ['App\Http\Controllers\Frontend\ReservationController', 'premier'])->name('reservation.premier');
 Route::post('/reservation/premier-partie', ['App\Http\Controllers\Frontend\ReservationController', 'storepremier'])->name('reservation.store.premier');
 Route::get('/reservation/deuxieme-partie', ['App\Http\Controllers\Frontend\ReservationController', 'deuxieme'])->name('reservation.deuxieme');

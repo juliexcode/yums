@@ -24,7 +24,7 @@
 
 
         <div class="container">
-            <a class="navbar-brand" style="font-family:'Lateef', cursive; font-size:40px" href="#">YUM'S</a>
+            <a class="navbar-brand" style="font-family:'Lateef', cursive; font-size:40px" href="{{route('welcome.index')}}">YUM'S</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,16 +33,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('admin.carte.index')}}">PRODUITS</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            CATEGORIES
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.tables.index')}}">TABLES</a>
                     </li>
@@ -57,16 +48,14 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li>
-                                <a class="dropdown-item" href="#">Action</a>
-                            </li>
+
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
                                     <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                        DECONNEXION
+                                        DÉCONNEXION
 
                                     </a>
                                 </form>

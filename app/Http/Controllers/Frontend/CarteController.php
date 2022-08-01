@@ -15,9 +15,30 @@ class CarteController extends Controller
     }
     public function plat()
     {
-        $plats = Carte::query()
+        $cartes = Carte::query()
             ->where('categories', '=', 'plat')
             ->get();
-        return view('lacarte.plat')->with('plats', $plats);
+        return view('lacarte.plat')->with('cartes', $cartes);
+    }
+    public function entree()
+    {
+        $cartes = Carte::query()
+            ->where('categories', '=', 'Entrée')
+            ->get();
+        return view('lacarte.plat')->with('cartes', $cartes);
+    }
+    public function dessert()
+    {
+        $cartes = Carte::query()
+            ->where('categories', '=', 'dessert')
+            ->get();
+        return view('lacarte.plat')->with('cartes', $cartes);
+    }
+    public function boisson()
+    {
+        $cartes = Carte::query()
+            ->where('categories', '=', 'boisson')
+            ->get();
+        return view('lacarte.plat')->with('cartes', $cartes);
     }
 }

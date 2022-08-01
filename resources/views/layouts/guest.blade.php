@@ -24,7 +24,7 @@
 
 
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"> <img src="/images/logo.png" style="width:102px ;height:48px"></a>
+            <a class="navbar-brand" href="{{route('welcome.index')}}"> <img src="/images/logo.png" style="width:102px ;height:48px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,11 +43,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="lien" href="{{route('carte.index')}}">LA CARTE</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" id="lien" href="#">CONTACT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="lien" href="{{route('reservation.premier')}}">FAIRE RESERVATION</a>
+                        <a class="nav-link" id="lien" href="{{route('reservation.premier')}}">FAIRE UNE RÉSERVATION</a>
                     </li>
                 </ul>
 
@@ -76,7 +74,40 @@
 
         @yield('content')
     </main>
+    <footer style="margin-top:20px ; border: 1px solid black; border-right:none">
+        <div class="card-group">
+            <div class="card" style="text-align: center; border:none; ">
 
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 30px;font-family: 'Lateef'; text-decoration: underline;  text-decoration-color: #FFF190;">ADRESSE</h5>
+                    <p class="card-text" style="font-size: 18px;font-family: 'Ubuntu', sans-serif;">14 rue de la Guadeloupe
+                        ZA Foucherolles <br>
+                        97490 - STE-CLOTILDE</p>
+
+                </div>
+            </div>
+            <div class="card" style="text-align: center;border:none; ">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 30px;font-family: 'Lateef';  text-decoration: underline;  text-decoration-color: #FFF190;"> HORAIRE</h5>
+                    <p class="card-text" style="font-size: 18px;font-family: 'Ubuntu', sans-serif; color: #E6C065;"> LUNDI-DIMANCHE </p>
+                    <p class="card-text" style="font-size: 18px;font-family: 'Ubuntu', sans-serif; ;">12h00-15h00 / 19h00-23h00</p>
+
+
+                </div>
+            </div>
+            <div class="card" style="text-align: center;border:none;  ">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 30px;font-family: 'Lateef';text-decoration: underline;  text-decoration-color: #FFF190;"> CONTACT</h5>
+                    <p class="card-text" style="font-size: 18px;font-family: 'Ubuntu', sans-serif;"><span style="color: #E6C065;">E-mail </span> <span>contact@yums.fr</span></p>
+                    <p class="card-text" style="font-size: 18px;font-family: 'Ubuntu', sans-serif;"> <span style="color: #E6C065;">Télephone </span><span>06 93 12 12 12</span></p>
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
