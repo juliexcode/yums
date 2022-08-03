@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'YUMS') }}</title>
+
 
     <!-- Fonts -->
     <style>
@@ -107,6 +108,7 @@
                 </div>
             </div>
         </div>
+        <div style="text-align:center;background-color:rgba(230, 192, 101, 1)">Site créé par PERIANMODELY Julie</div>
     </footer>
 </body>
 

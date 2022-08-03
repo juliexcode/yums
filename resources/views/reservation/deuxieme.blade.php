@@ -25,7 +25,7 @@
             </div>
             <div class="row" style="margin-top:30px ;">
                 <div class="col">
-                    <a href="{{route('reservation.premier')}}"><button id="btn_prec">PRÉCEDENT</button></a>
+                    <a href="{{route('reservation.premier')}}" id="btn_prec">PRÉCEDENT</a>
                 </div>
                 <div class="col">
                     <button type="submit" id="btn_res"> RÉSERVER</button>
@@ -43,8 +43,8 @@
 
 <style>
     #btn_prec {
-        width: 145px;
-        height: 47px;
+        color: black;
+        text-decoration: none;
         background-color: rgba(255, 241, 144, 1);
         border: 1px solid rgba(230, 192, 101, 1);
         border-radius: 20px;

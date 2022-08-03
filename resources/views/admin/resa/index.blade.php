@@ -19,11 +19,11 @@
         <tbody>
             @foreach($reservations as $resa)
             <tr>
-                <td>{{$resa->nom}} {{$resa->prenom}}</td>
-                <td>{{$resa->email}} / {{$resa->tel}}</td>
-                <td>{{date('d-m-Y', strtotime($resa->date))}} / {{$resa->heure}}</td>
+                <td style="overflow-wrap: anywhere">{{$resa->nom}} {{$resa->prenom}}</td>
+                <td style="overflow-wrap: anywhere">{{$resa->email}} / {{$resa->tel}}</td>
+                <td style="overflow-wrap: anywhere">{{date('d-m-Y', strtotime($resa->date))}} / {{$resa->heure}}</td>
                 <td>{{$resa->personnes}}</td>
-                <td>{{$resa->table->name}}</td>
+                <td style="overflow-wrap: anywhere">{{$resa->table->name}}</td>
                 <td><a href="{{route ('admin.resa.edit',$resa->id)}}"><button id="btn_mod">Modifier</button> </a>
                     <form method="POST" action="{{route('admin.resa.destroy', $resa->id)}}" onsubmit="return confirm('Êtes-vous sûre de vouloir annuler?')">
                         @csrf

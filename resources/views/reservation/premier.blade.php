@@ -16,13 +16,13 @@
             <div class="row">
                 <div class="col">
                     <label class="form-label" id="champsText">NOM</label>
-                    <input id="champs" type="text" name="nom" class="form-control" value="{{$resa->nom ?? ''}}" placeholder="Votre nom">
+                    <input id="champs" type="text" name="nom" class="form-control" maxlength="12" value="{{$resa->nom ?? ''}}" placeholder="Votre nom">
 
                 </div>
 
                 <div class="col">
                     <label class="form-label" id="champsText">PRÉNOM</label>
-                    <input id="champs" type="text" name="prenom" class="form-control" value="{{$resa->prenom ?? ''}}" placeholder="Votre prénom">
+                    <input id="champs" type="text" name="prenom" class="form-control" maxlength="12" value="{{$resa->prenom ?? ''}}" placeholder="Votre prénom">
 
                 </div>
             </div>
@@ -35,7 +35,7 @@
 
             <div class="mb-3">
                 <label class="form-label" id="champsText">NUMÉRO DE TÉLÉPHONE</label>
-                <input id="champs" type="tel" name="tel" class="form-control" value="{{$resa->tel ?? ''}}" placeholder="Votre numéro de téléphone">
+                <input id="champs" type="tel" name="tel" class="form-control" maxlength="10" value="{{$resa->tel ?? ''}}" placeholder="Votre numéro de téléphone">
 
             </div>
 
